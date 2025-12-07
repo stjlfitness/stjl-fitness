@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STJL - FITNESS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: black;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .slogan {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        .containerlogo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: auto;
+        }
+
+        .logo-text {
+            text-align: left;/
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: black;
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            transition: background 0.3s;
+        }
+
+        .navbar a:hover {
+            background: #333;
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Espaciado para navbar fija */
+        section {
+            padding-top: 80px;
+            /* Altura de tu navbar */
+        }
+
+        /* About Section */
+        .about-section {
+            background: #f8f9fa;
+            padding: 3rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-card h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+
+        /* Catalog Section */
+        .catalog-section {
+            padding: 3rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #2c3e50;
+            border-radius: 2px;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: #Gray;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-buy {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-buy:hover {
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #f8f9fa;
+            padding: 3rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #Gray;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer-credits {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .catalog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        .imgref {
+            color: white;
+            /* color inicial blanco */
+            text-decoration: none;
+            /* opcional, quita el subrayado */
+        }
+
+        .imgref:hover {
+            color: #40E0D0;
+            /* azul turquesa en hover */
+        }
+
+        .btn-negro {
+            display: inline-block;
+            background: #000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-negro:hover {
+            background: #333;
+        }
+
+        .btn-fb {
+            display: inline-block;
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-fb:hover {
+            background: lightblue;
+        }
+
+        .btn-ig {
+            display: inline-block;
+            background: magenta;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-ig:hover {
+            background: pink;
+        }
+
+        .btn-tt {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-tt:hover {
+            background: linear-gradient(45deg, #ff0050, #ff4d00);
+        }
+
+        /*.wsp {
+  	    color: black;  color inicial negroo 
+        text-decoration: none; opcional, quita el subrayado 
+	}
+
+	.wsp:hover {
+        color: limegreen;  azul turquesa en hover 
+	}
+    .gmail {
+  	    color: black;  color inicial negro 
+        text-decoration: none;  opcional, quita el subrayado 
+	}
+
+	.gmail:hover {
+        color: lightcoral;  azul turquesa en hover 
+	}
+    .call {
+  	    color: black;  color inicial negro 
+        text-decoration: none;  opcional, quita el subrayado 
+	}
+
+	.call:hover {
+        color: yellow;  azul turquesa en hover 
+	}*/
+        .video-centrado {
+            display: block;
+            margin: 0 auto;
+            width: 640px;
+            /* Ajusta según necesites */
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="containerlogo" style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://previews.123rf.com/images/asmaparin/asmaparin2409/asmaparin240900052/234930472-fitness-hand-with-dumbbell-vector-illustration-isolated-on-black-background.jpg"
+                alt="Logo STJL" class="logo-img" />
+            <div class="logo-text">
+                STJL - FITNESS
+                <p class="slogan">“Ropa deportiva única, como tú”</p>
+                <p>(Página web didáctica con fines educativos)</p>
+            </div>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienes">¿Quiénes somos?</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#contactanos">Contáctanos</a></li>
+                <li><a href="#redes">Redes sociales</a></li>
+            </ul>
+        </nav>
+    </header><br>
+    <section id="inicio">
+        <video class="video-centrado" width="640" height="360" controls autoplay muted loop>
+            <source src="Video/STJL-FITNESS.mp4" type="video/mp4">Tu navegador no
+            soporta la etiqueta de video.
+        </video>
+    </section>
+    <!-- About Section -->
+    <section id="quienes" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Quiénes Somos✨</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>
+                        <center>📌 Misión y Visión🎯</center>
+                    </h3>
+                    <p><strong>Misión:</strong></p>
+                    <p>
+                        <center>Diseñar y ofrecer ropa deportiva de alta calidad que se adapte al cuerpo, ritmo y
+                            personalidad de cada cliente, fusionando comodidad, innovación y personalización para
+                            motivar un estilo de vida activo, saludable, creativo y auténtico.</center>
+                    </p>
+                    <p><strong>Visión:</strong></p>
+                    <p>
+                        <center>Ser la marca líder en ropa deportiva personalizada a nivel estatal, que combine estilo y
+                            autenticidad, inspirando a las personas a alcanzar su máximo potencial mientras expresan su
+                            identidad a través de cada diseño, inspirando a cada atleta sin importar sean principiantes
+                            o profesionales.</center>
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h3>
+                        <center>💡 Filosofía</center>
+                    </h3>
+                    <p>
+                        <center>Creemos que cada persona entrena con una meta y una actitud única, por eso, la ropa
+                            deportiva debe reflejar quién eres. Nuestra filosofía se basa en la innovación,
+                            personalización, confianza, en la calidad de cada una de nuestras prendas, diseñando ropa
+                            que no solo acompañen tu entrenamiento, sino que también te hagan sentir diferente y fuerte
+                            para enfrentar cualquier obstáculo.</center>
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h3>
+                        <center>⭐ Valores</center>
+                    </h3>
+                    <p>
+                        <center><strong>Calidad:</strong> Excelencia en cada prenda, con el uso de los mejores
+                            materiales de fabricación.<br>
+                            <strong>Confianza:</strong> Queremos que te sientas seguro y empoderado con lo que llevas
+                            puesto.<br>
+                            <strong>Inclusividad:</strong> Diseñamos para todas las personas, tanto para principiantes
+                            como profesionales en el deporte.<br>
+                            <strong>Innovación:</strong> Buscamos constantemente nuevas ideas, materiales y diseños que
+                            mejoren tu experiencia deportiva.<br>
+                            <strong>Pasión:</strong> Nos mueve la motivación de cada persona que viste nuestra
+                            marca.<br>
+                            <strong>Personalización:</strong> Cada prenda se adapta a tu estilo y cuerpo reflejando tu
+                            identidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalogo" class="catalog-section">
+        <div class="container">
+            <h2 class="section-title">Nuestro Catálogo📖<br><small>Contáctanos para tu compra de manera
+                    personal!!!</small></h2>
+            <div class="catalog-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/oleg23photo/oleg23photo2204/oleg23photo220400110/184762181-mockup-of-textured-black-shorts-3d-rendering-with-compression-lining-elasticated-loop-isolated-on.jpg"
+                        alt="Short Deportivo Pro" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Short Deportivo Pro</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$349.00</p>
+                        <p class="product-description">Short ligero con tecnología de secado rápido, ideal para running
+                            y entrenamientos intensos.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/vitalytyagunov/vitalytyagunov1511/vitalytyagunov151101515/47598795-sports-bra-isolated-on-white.jpg"
+                        alt="Top Deportivo Mujer" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Top Deportivo Mujer</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$399.00</p>
+                        <p class="product-description">Top de alto soporte con tecnología anti-humedad, perfecto para
+                            yoga y fitness.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/tanvir65699016/tanvir656990162506/tanvir65699016250600419/248746213-white-t-shirt-isolated-on-white-background-3d-rendering.jpg"
+                        alt="Playera Dry-Fit" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Playera Dry-Fit</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$299.00</p>
+                        <p class="product-description">Playera transpirable con protección UV, ideal para entrenamientos
+                            al aire libre.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/fotosaga/fotosaga1710/fotosaga171000806/88748852-black-pants-on-black-isolated-on-white-background.jpg"
+                        alt="Pants Deportivo" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Pants Deportivo</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$549.00</p>
+                        <p class="product-description">Pants con ajuste ergonómico y bolsillos funcionales, perfecto
+                            para cualquier actividad.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/brunonunesdp1/brunonunesdp12311/brunonunesdp1231100330/216926568-an-invisible-mannequin-with-a-hoodie-isolated-on-a-white-background.jpg"
+                        alt="Hoodie Premium" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Hoodie Premium</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$699.00</p>
+                        <p class="product-description">Sudadera con capucha de algodón premium, comodidad y estilo en
+                            una prenda.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/liudmilachernetska/liudmilachernetska2212/liudmilachernetska221210321/195501699-set-with-new-socks-on-white-background.jpg"
+                        alt="Calcetas Deportivas" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Calcetas Deportivas (3 pares)</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$199.00</p>
+                        <p class="product-description">Set de calcetas con refuerzo en talón y puntera, máxima
+                            durabilidad y confort.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/bangchuck/bangchuck2007/bangchuck200700113/151826794-this-front-view-female-tank-top-mock-up-in-turmeric-powder-color-with-hanger-is-made-to-help-you.jpg"
+                        alt="Tank Top Entrenamiento" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Tank Top Entrenamiento</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$249.00</p>
+                        <p class="product-description">Camiseta sin mangas ultra ligera, perfecta para el gym y
+                            entrenamientos de alta intensidad.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/oleg23photo/oleg23photo2204/oleg23photo220400102/187946332-mockup-of-black-women-s-leggings-with-beautiful-legs-sportswear-3d-rendering-isolated-on.jpg"
+                        alt="Leggins Compression" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Leggings Compression</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$499.00</p>
+                        <p class="product-description">Mallas de compresión que mejoran la circulación y reducen la
+                            fatiga muscular.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/alexandrbognat/alexandrbognat1604/alexandrbognat160400042/57168220-blank-white-wristband-mockup-on-hand-isolated.jpg"
+                        alt="Muñequeras Deportivas" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Muñequeras Deportivas (Par)</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$149.00</p>
+                        <p class="product-description">Muñequeras absorbentes de alta calidad, ideales para tenis,
+                            básquetbol y gym.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/kantver/kantver1610/kantver161000136/66068022-closeup-of-blank-cotton-tshirt-of-white-and-black-colors-hanging-in-center-empty-concrete-wall.jpg"
+                        alt="Jersey Deportivo" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Jersey Deportivo</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$449.00</p>
+                        <p class="product-description">Jersey versátil con tecnología anti-olor, ideal para deportes de
+                            equipo.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 11 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/kustomer/kustomer1703/kustomer170300032/74561669-mock-up-blank-baseball-cap-pink-front-view-on-white-background.jpg"
+                        alt="Gorra Deportiva" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Gorra Deportiva</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$249.00</p>
+                        <p class="product-description">Gorra transpirable con protección UV, perfecta para running y
+                            actividades outdoor.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+
+                <!-- Product 12 -->
+                <div class="product-card">
+                    <img src="https://previews.123rf.com/images/siraphol/siraphol1611/siraphol161106807/66114023-sport-jacket-for-clothing-isolated-on-white-background.jpg"
+                        alt="Chamarra Cortavientos" class="product-image" />
+                    <div class="product-info">
+                        <h3 class="product-name">Chamarra Cortavientos</h3>
+                        <h6>Imagen proporcionada por 123RF</h6>
+                        <p class="product-price">$799.00</p>
+                        <p class="product-description">Chamarra ligera resistente al viento y agua, perfecta para
+                            entrenamientos al exterior.</p>
+                        <!--<button class="btn-buy">Agregar al carrito</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contactanos" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contáctanos📢<br>
+                ¡Estamos para brindarte el mejor servicio!💪</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Dirección</h3>
+                    <p>Av. Oaxaca #123<br>
+                        Col. Zona Centro<br>
+                        Ocotlán de Morelos, Oaxaca<br>
+                        C.P. 71510</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🕒</div>
+                    <h3>Horario de Atención en Sucursal</h3>
+                    <p>Lunes a Viernes<br>
+                        9:00 AM - 7:00 PM<br><br>
+                        Sábados<br>
+                        10:00 AM - 6:00 PM<br><br>
+                        Domingos: Cerrado</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Contacto directo</h3>
+                    <p>Consultas por llamada:<br>
+                        <a class="btn-negro" href="tel:+529517307758" target="_blank">(951) 730-7758</a><br>
+                        Consultas 24/7 por WhatsApp:<br>
+                        <a class="btn-negro"
+                            href="https://wa.me/529517307758?text=Hola,%20me%20gustaría%20hacer%20una%20consulta%20¿Con%20quién%20tengo%20el%20gusto?"
+                            target="_blank">(951) 730-7758</a><br>
+                        Consultas por email:<br>
+                        <a class="btn-negro"
+                            href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=stjlfitness@gmail.com&su=Consulta&body=Saludos,%20me%20interesaría%20saber%20más%20sobre..."
+                            target="_blank">stjlfitness@gmail.com</a><br><br>
+                        <small>(Nuestro Whatsapp es monitoreado por un chat bot de repuestas automaticas, si desea
+                            atención personalizada dentro de nuestro horario de trabajo realize una llamada a nuestro
+                            número telefónico.)</small>
+                    </p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🛍️🔥</div>
+                    <h3>Promociones, eventos y novedades</h3>
+                    <p>¡Presentamos nuestra aplicación!<br>
+                        Una nueva forma de estar al pendiente nuestras diversas actividades.<br> ¿Qué esperas para
+                        formar parte?<br>
+                        Para tenerla totalmente solo necesitas completar los siguientes pasos:<br>
+                        1.- Da click en el botón de abajo, te redireccionara directo a nuestra app (instalarla es
+                        opcional).<br>
+                        2.- Al abrir se desplegara una pantalla de registro, solo debes iniciar sesión con tu correo o
+                        bien por medio de google.<br>
+                        3.- ¡Y listo! estaras formando parte de nuestra aplicación desde ese momento.<br>
+                        <a class="btn-negro" href="https://stjl-fitness-app-b5nr.glide.page" target="_blank">¡Prueba
+                            nuestra app gratuita aqui!</a><br>
+                        <small>(En caso de querer recibir promociones, eventos o novedades, por medio de su correo
+                            electrónico, rellene el formulario que aparece al abrir la app.)</small>
+
+                </div>
+            </div>
+        </div><br>
+        <section id="redes">
+            <div class="contact-card">
+                <h3>¡Síguenos en redes sociales!</h3>
+                <div class="contact-icon">
+                    <a class="btn-fb" href="https://www.facebook.com/profile.php?id=61584568238207" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn-ig" href="https://www.instagram.com/stjl_fitness?igsh=dXM2b2JwdWNjNHpr"
+                        target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="btn-tt" href="https://www.tiktok.com/@stjlfitness?is_from_webapp=1&sender_device=pc"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">STJL - FITNESS</div>
+            <p>Ropa deportiva y creativa de calidad</p>
+            <div class="footer-info">
+                <p>© 2025 STJL - FITNESS - Todos los derechos reservados</p>
+                <p>Todas las imagenes fueron tomadas de una página web libre de derechos de autor</p>
+                <a class="imgref" href="https://es.123rf.com/">123RF Imágenes sin derechos de autor</a></p>
+                <p>(Página web didáctica con fines educativos)</p>
+            </div>
+            <div class="footer-credits">
+                <p>Trabajo didáctico elaborado por:</p>
+                <p>Saraí Benegas Ramírez y Jorge Luis Martínez Contreras</p>
+                <p>Nova Universitas - Campus San Jacinto</p>
+                <p>Ocotlán de Morelos, Oaxaca, México</p>
+            </div>
+        </div>
+    </footer>
+
+    <!--
+    <script>
+        // Funcionalidad para los botones de compra
+        document.querySelectorAll('.btn-buy').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.parentElement.querySelector('.product-name').textContent;
+                alert('¡' + productName + ' agregado al carrito! 🛒');
+            });
+        });
+    </script>-->
+</body>
+
+</html>
